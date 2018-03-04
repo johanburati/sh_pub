@@ -1,0 +1,11 @@
+Import-DSCResource -Module nx
+Node $Node
+{
+  nxFile file
+     {
+       DestinationPath ="/tmp/test"
+       Contents="DSCForLinux test"
+       Ensure="Present"
+       Type="File"
+     }
+}
