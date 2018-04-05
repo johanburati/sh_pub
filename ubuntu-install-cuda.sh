@@ -14,7 +14,6 @@ function usage {
 
 function install_driver {
 	cuda_pkg="$1"
-	echo $cuda_pkg; exit 1
 	nvidia_key=https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
 	cuda_repo_url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
 
@@ -53,8 +52,8 @@ function check_gpu {
 
 # Main
 
-check_root()
-check_gpu()
+check_root
+check_gpu
 
 if [[ $# -ne 0 ]]; then
 	case "$1" in
