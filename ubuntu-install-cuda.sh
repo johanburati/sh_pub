@@ -20,7 +20,7 @@ function install_driver {
 
 	cuda_repo_pkg=${cuda_repo_url##*/}
 	wget -qO - "$nvidia_key" | apt-key add - 
-	curl -O "$cuda_repo_url" && dpkg -i "$cuda_repo_pkg" && apt-get update && apt-get install -y "$cuda_pkg"
+	curl -O "$cuda_repo_url" && dpkg -i "$cuda_repo_pkg" && apt-get update && apt-get install -y nvidia-418 "$cuda_pkg"
 
 	if [[ "$?" -eq 0 ]]; then
 		echo "Installing CUDA toolkit (${cuda_pkg}): Succeded !"
