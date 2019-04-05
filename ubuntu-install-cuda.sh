@@ -4,10 +4,11 @@
 driver=cuda-9-1
 
 function usage {
-	echo "Usage: $0 [8|9|purge]"
+	echo "Usage: $0 [8|9|10|purge]"
 	echo " install $driver by default"
 	echo " 8 - install cuda-8-0"
 	echo " 9 - install cuda-9-0"
+	echo " 10 - install cuda-9-0"
 	echo " purge - uninstall cuda driver"
 	exit 64
 }
@@ -15,7 +16,7 @@ function usage {
 function install_driver {
 	cuda_pkg="$1"
 	nvidia_key=https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
-	cuda_repo_url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+	cuda_repo_url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.1.105-1_amd64.deb
 
 	cuda_repo_pkg=${cuda_repo_url##*/}
 	wget -qO - "$nvidia_key" | apt-key add - 
@@ -57,6 +58,9 @@ check_gpu
 
 if [[ $# -ne 0 ]]; then
 	case "$1" in
+		10)
+			driver=cuda-10-0
+			;;
 		9)
 			driver=cuda-9-0
 			;;
