@@ -14,7 +14,7 @@ if [ -f DESCRIPTION ]; then
 			;;
 		go)
 			echo "Generating index for go programs"
-			for dir in $(ls -1d */ | sed 's;/$;;' | sort); do echo -n "* **$dir** - "; sed -n '2p' $dir/README.md; done >> README.md
+			for dir in $(ls -1d */ | sed 's;/$;;' | sort | egrep -v "tmp|bak"); do echo -n "* **[$dir]($dir)** - "; sed -n '2p' $dir/README.md; done >> README.md
 			;;
 	esac
 else
